@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Ionic Chat</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-slides pager>
+    <ion-slide>
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary">Next</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <img src="{{imagePanda}}" class="slide-image" />
+      <h2 class="slide-title">Welcome to the Ionic Chat App</h2>
+      <p>
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="userName" placeholder="Name" (keyup)="validateFirstSlide()" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf="availableSims">
+            
+            <ion-select class="full-width" [(ngModel)]="userPhoneNumber" (ngModelChange)="checkUser()">
+              <ion-option *ngFor="let sim of availableSims" [value]="sim">{{sim}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="!availableSims">
+            No SIM found :(
+          </ion-item>
+        </ion-list>
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-toolbar>
+          <ion-buttons end>
+            <button ion-button color="primary">Next</button>
+          </ion-buttons>
+        </ion-toolbar>
+        <img src="{{userAvatar}}" class="slide-image" (click)="pickImage()" />
+        <h4 (click)="pickImage()" text-center >Set your profile picture </h4>
+        <p>
+          <ion-textarea [(ngModel)]="userStatus" placeholder="Status" (keyup)="validateSecondSlide()">
+          </ion-textarea>
+        </p>
+      </ion-slide>
+
+      <ion-slide>
+          <ion-toolbar>
+          </ion-toolbar>
+          <img src="{{imageHurray}}" class="slide-image" />
+          <p>
+            <button ion-button full large clear (click)="getStarted()">Get Started</button>
+          </p>
+        </ion-slide>
+
+  </ion-slides>
+</ion-content>

@@ -26,6 +26,7 @@ import { FirebaseDataProvider } from '../providers/firebase-data/firebase-data';
 
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatPage } from '../pages/chat/chat';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBLv1eOAbHM-0g1hYOOQGCL1CBrqc9Jv28",
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    SignupPage
+    SignupPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    SignupPage
+    SignupPage,
+    ChatPage
   ],
   providers: [
     StatusBar,

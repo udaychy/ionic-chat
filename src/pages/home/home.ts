@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Tabs } from 'ionic-angular';
+import { ChatPage } from '../chat/chat';
 
 @Component({
   selector: 'page-home',
@@ -14,5 +15,13 @@ export class HomePage {
 
   goToContactTab(){
     (this.navCtrl.parent as Tabs).select(2);
+  }
+
+  goToChatPage(){
+    var chat = {
+      number:9999999999,
+      name:"Test"
+    }
+    this.navCtrl.parent.parent.push(ChatPage, chat)
   }
 }

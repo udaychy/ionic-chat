@@ -80,7 +80,6 @@ export class SqlStorageProvider {
   initializeDatabase() {
     return this.sqLite.create({ name: 'data.chat', location: 'default' })
       .then(db => {
-        debugger;
         this.db = db;
         this.db.executeSql('CREATE TABLE IF NOT EXISTS '+ this.tables.contacts +' (key text, value text)', [])
         this.db.executeSql('CREATE TABLE IF NOT EXISTS '+ this.tables.user +' (key text primary key, value text)', [])

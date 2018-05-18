@@ -24,7 +24,9 @@ export class UserDataProvider {
   }
   
   getCurrentUser(){
-    return this.sqlite.getAll(this.sqlite.tables.user);
+    return this.sqlite.getAll(this.sqlite.tables.user).then(users => {
+      return users.length > 0 ? users[0] : null
+    });
   }
 
   storeAllContactsLocally(contacts: ContactModel[]): void{
@@ -69,9 +71,9 @@ export class UserDataProvider {
   filterContact(searchKeyword):ContactModel[]{
     if(!searchKeyword) return this.allContacts;
 
-    var filteredRes = _.find(this.allContacts, function(contact) { 
+    var filteredRes = _.filter(this.allContacts, function(contact) { 
       var isContain = contact.displayName.toLowerCase().includes(searchKeyword.toLowerCase()) 
-      || contact.numbertoLowerCase().includes(searchKeyword.toLowerCase())
+      || contact.number.toLowerCase().includes(searchKeyword.toLowerCase())
       console.log(isContain)
       return isContain;
      });
